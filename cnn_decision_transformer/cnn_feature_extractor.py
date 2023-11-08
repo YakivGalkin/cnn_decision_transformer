@@ -31,6 +31,8 @@ def reshape_observation( observation): # move channel to the end, add batch dime
             observation = transpose_obs
     # Add batch dimension if needed
     observation = observation.reshape((-1, *observation_space_shape))
+    return observation
+
 
 def prepare_env_observation_tensor( observation):
     observation = reshape_observation( observation)
