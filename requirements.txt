@@ -1,0 +1,9 @@
+box2d-py
+gymnasium[box2d]
+stable-baselines3[extra]
+toml
+wandb
+datasets
+transformers
+accelerate
+h5py
