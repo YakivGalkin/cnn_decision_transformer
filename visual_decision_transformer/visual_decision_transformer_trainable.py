@@ -73,7 +73,7 @@ class VisualDecisionTransformerGymDataCollator:
             # for feature in features:
             feature = self.dataset[int(ind)]
             if(len(feature["rewards"]) < self.max_len):
-                print("skipping batch item")
+                #print("skipping batch item")
                 continue
             si = random.randint(0, len(feature["rewards"]) - self.max_len)
 
