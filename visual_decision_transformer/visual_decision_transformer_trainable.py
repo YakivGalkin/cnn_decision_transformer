@@ -40,7 +40,7 @@ class VisualDecisionTransformerGymDataCollator:
         for obs in dataset["observations"]:
             states.extend(obs)
             traj_lens.append(len(obs))
-        self.n_traj = len(traj_lens)
+        self.n_traj = len(traj_lens) if len(traj_lens) >= max_len+1 else 0 # temp fix - should re-implement padding on training 
         states = np.vstack(states)
         #yakiv. no normalisation here 
         # self.state_mean, self.state_std = np.mean(states, axis=0), np.std(states, axis=0) + 1e-6
