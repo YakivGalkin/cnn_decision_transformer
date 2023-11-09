@@ -35,7 +35,7 @@ from transformers.utils import (
     logging,
     replace_return_docstrings,
 )
-from cnn_decision_transformer.configuration import DecisionTransformerConfig
+from visual_decision_transformer.configuration import DecisionTransformerConfig
 from utils.timing import execution_timing
 
 

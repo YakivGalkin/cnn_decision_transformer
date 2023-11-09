@@ -7,3 +7,5 @@ datasets
 transformers
 accelerate
 h5py
+imageio 
+imageio-ffmpeg
