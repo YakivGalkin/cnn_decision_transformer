@@ -1,11 +1,23 @@
-# Decision Transformer for CarRacing-v2
+# Applying Transformer Architecture to classical car-driving RL tasks
 
-This repository contains the implementation and trained models of a Decision Transformer, an offline reinforcement learning algorithm, for the CarRacing-v2 environment.
+This project investigates the application of transformer architectures in classical car-driving reinforcement learning tasks.
 
-## Overview
+## Demonstration
 
-The Decision Transformer is a model that reformulates reinforcement learning as a sequence modeling problem. It uses transformer architecture to predict actions based on past states, actions, and rewards. This repository includes a pretrained model and code to train new models using the stable_baselines3 framework.
+The project has led to improvements in the Hugging Face Decision Transformer, allowing it to process visual inputs and discrete actions. Major steps included training a basic Deep Q-Network (DQN) to explore Gym CarRacing V2 the environment, creating an offline dataset, and further training of the Decision Transformer with this data.
 
-## Getting Started
 
-TBD...
+| DQN (Deep Q Learning) | Visual Decision Transformer |
+| --------------------- | --------------------------- |
+| ![DQN GIF](./media/dqn_ride.gif) | ![VDT GIF](./media/vdt_ride.gif) |
+| DQN Training | VDT Training |
+| Generating Offline Datasewt |  |
+
+
+## Classic RL Algorithms
+
+...
+
+## Transformers in RL 
+
+...
