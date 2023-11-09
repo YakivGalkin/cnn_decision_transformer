@@ -57,6 +57,8 @@ class VisualDecisionTransformerGymDataCollator:
 
     def __call__(self, features):
         batch_size = len(features)
+        if batch_size == 0:
+            batch_size = 1
         # this is a bit of a hack to be able to sample of a non-uniform distribution
         batch_inds = np.random.choice(
             np.arange(self.n_traj),
