@@ -84,31 +84,6 @@ class VisualDecisionTransformerGymDataCollator:
             d.append(np.array(feature["dones"][si : si + self.max_len]).reshape(1, -1))
             timesteps.append(np.arange(si, si + s[-1].shape[1]).reshape(1, -1))
             mask.append(np.ones((1, self.max_len)))
-            #timesteps[-1][timesteps[-1] >= self.max_ep_len] = self.max_ep_len - 1  # padding cutoff
-            # rtg.append(
-            #     self._discount_cumsum(np.array(feature["rewards"][si:]), gamma=1.0)[
-            #         : s[-1].shape[1]   # TODO check the +1 removed here
-            #     ].reshape(1, -1, 1)
-            # )
-            # if rtg[-1].shape[1] < s[-1].shape[1]:
-            #     print("if true")
-            #     rtg[-1] = np.concatenate([rtg[-1], np.zeros((1, 1, 1))], axis=1)
-
-            # padding and state + reward normalization
-            ### REMOVED PADDING
-        #     tlen = s[-1].shape[1]
-        #     s[-1] = np.concatenate([np.zeros((1, self.max_len - tlen, self.state_dim)), s[-1]], axis=1)
-        #     #yakiv. no normalisation here
-        # #  s[-1] = (s[-1] - self.state_mean) / self.state_std
-        #     a[-1] = np.concatenate(
-        #         [np.ones((1, self.max_len - tlen, self.act_dim)) * ACTION_PAD_TOKEN_ID, a[-1]],
-        #         axis=1,
-        #     )
-        #     r[-1] = np.concatenate([np.zeros((1, self.max_len - tlen, 1)), r[-1]], axis=1)
-        #     d[-1] = np.concatenate([np.ones((1, self.max_len - tlen)) * 2, d[-1]], axis=1)
-        #     rtg[-1] = np.concatenate([np.zeros((1, self.max_len - tlen, 1)), rtg[-1]], axis=1) / self.scale
-        #     timesteps[-1] = np.concatenate([np.zeros((1, self.max_len - tlen)), timesteps[-1]], axis=1)
-        #     mask.append(np.concatenate([np.zeros((1, self.max_len - tlen)), np.ones((1, tlen))], axis=1))
         
 
         s = torch.from_numpy(np.concatenate(s, axis=0)).float()
@@ -163,7 +138,6 @@ class TrainableVisualDecisionTransformer(VisualDecisionTransformerModel):
         # action_targets = action_targets.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
 
         # loss = torch.mean((action_preds - action_targets) ** 2)
-        print(f"loss: {loss}")
         return {"loss": loss}
 
     def original_forward(self, **kwargs):
