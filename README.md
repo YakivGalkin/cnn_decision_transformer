@@ -4,14 +4,21 @@ This project investigates the application of transformer architectures in classi
 
 ## Demonstration
 
-The project has led to improvements in the Hugging Face Decision Transformer, allowing it to process visual inputs and discrete actions. Major steps included training a basic Deep Q-Network (DQN) to explore Gym CarRacing V2 the environment, creating an offline dataset, and further training of the Decision Transformer with this data.
+The project has led to improvements in the Hugging Face Decision Transformer, allowing it to process visual inputs and discrete actions. Major steps included training a basic Deep Q-Network (DQN) to explore Gym CarRacing V2 the environment, creating an offline dataset, modifying and further training of the Decision Transformer with this data.
 
 
-| DQN (Deep Q Learning) | Visual Decision Transformer |
+| Driver: Deep Q Learning  | Driver: Visual Decision Transformer |
 | --------------------- | --------------------------- |
 | ![DQN GIF](./media/dqn_ride.gif) | ![VDT GIF](./media/vdt_ride.gif) |
-| DQN Training | VDT Training |
-| Generating Offline Datasewt |  |
+| DQN Training [![CoLab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YakivGalkin/cnn_decision_transformer/blob/main/DQN_train.ipynb) | VDT Training [![CoLab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YakivGalkin/cnn_decision_transformer/blob/main/VDT_train.ipynb) |
+
+Using DQN to explore environment and Generating Offline Dataset [![CoLab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YakivGalkin/cnn_decision_transformer/blob/main/DQN_generate_dataset.ipynb)  
+
+Evaluating DQN & VDT, video recording [![CoLab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YakivGalkin/cnn_decision_transformer/blob/main/demo_video.ipynb)  
+
+
+
+
 
 
 ## Transformers in RL 
@@ -25,7 +32,7 @@ Two primary uses of transformers are:
 
 In the scope of this project, I decided to focus on Sequential Decision-making.
 One of the first papers in this regard was [Offline Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
-As part of the experiments, the authors implemented a Trajectory Transformer that discretizes all continuous states, actions, and rewards (a quantile discretizer was used by default) and then trained it on a sequence of states, actions, and rewards. 
+As part of the experiments, the authors implemented a Trajectory Transformer that tokenize/discretizes all continuous values (a quantile discretizer was used by default) and then trained it on a sequence of states, actions, and rewards. 
 
 ![Trajectory Transformer Tokens](./media/trajectory_transformer_tokens.jpg)
 
