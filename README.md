@@ -102,3 +102,18 @@ The HuggingFace implementation of the Decision Transformer has hardcoded embeddi
 To expedite training, I decided to "borrow" weights from a pre-trained DQN and use them for the initialisation of the image encoder in the transformer. The chart below demonstrates the difference in the speed of learning between using random weights in the convolutional layers and using weights taken from the DQN.
 
 ![Transformer Train](./media/decision_transformer_cnn.jpg)
+
+## Evaluation & Experiments
+The following experiments are planned:
+
+Investigate how the performance of the model varies with sequence length and target reward.
+Examine the impact of Transformer configuration and size of hidden state.
+Compare these results to those of a classic Deep Q-Network (DQN).
+It would also be interesting to record videos of the attention layers' behavior. 
+
+Additionally, it is worth exploring the use of this model for further Online Learning.
+
+
+
+
+
