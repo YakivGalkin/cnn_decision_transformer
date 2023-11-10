@@ -62,3 +62,23 @@ As a result, the major steps become:
 - Modifying HuggingFace's decision transformer to support image data and discrete actions
 - Training the Visual Decision Transformer
 - Evaluation, comparison, and experiments.
+
+## Choosing a Classic RL Algorithm
+
+Since I decided to use a discrete action space, Deep Q-learning seems to be a good option. Instead of implementing the model, replay buffer, and training cycle from scratch, it is possible to use the `stable_baselines3` Python library, which already has built-in implementations of most popular classic RL algorithms - DQN, PPO, SAC, etc.
+
+Thus, our training code is now reduced to two lines of Python code - model initialization and training:
+
+```python
+from stable_baselines3 import DQN
+from stable_baselines3.dqn.policies import CnnPolicy
+
+model = DQN(CnnPolicy, env, verbose=1, buffer_size=config["BUFFER_SIZE"], learning_starts=config["LEARNING_STARTS"], tensorboard_log="./tensorboard/")
+
+model.learn(total_timesteps=config["NUM_OF_STEPS"]*config["NUM_OF_EPISODES"], log_interval=config["LOG_INTERVAL"], callback=DQNCustomCallback())
+```
+
+
+The chart below demonstrates the model's evaluation results (cumulative reward) during the learning process. As we can see, the moving average approaches 900, which is considered a very good ride.
+
+![DQN Train](./media/dqn_train_reward.jpg)
