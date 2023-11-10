@@ -65,6 +65,8 @@ As a result, the major steps become:
 
 ## Choosing a Classic RL Algorithm
 
+[![CoLab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YakivGalkin/cnn_decision_transformer/blob/main/DQN_train.ipynb)
+
 Since I decided to use a discrete action space, Deep Q-learning seems to be a good option. Instead of implementing the model, replay buffer, and training cycle from scratch, it is possible to use the `stable_baselines3` Python library, which already has built-in implementations of most popular classic RL algorithms - DQN, PPO, SAC, etc.
 
 Thus, our training code is now reduced to two lines of Python code - model initialization and training:
@@ -82,3 +84,10 @@ model.learn(total_timesteps=config["NUM_OF_STEPS"]*config["NUM_OF_EPISODES"], lo
 The chart below demonstrates the model's evaluation results (cumulative reward) during the learning process. As we can see, the moving average approaches 900, which is considered a very good ride.
 
 ![DQN Train](./media/dqn_train_reward.jpg)
+
+
+## Building an Offline Dataset
+
+[![CoLab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YakivGalkin/cnn_decision_transformer/blob/main/DQN_generate_dataset.ipynb)  
+
+For offline dataset storage, I have chosen the HDF5 file format. One candidate was the Hugging Face Dataset with its Apache Arrow persistence layer, but it consumed more memory and worked more slowly. Since most of the work was done in Google Colab, Google Cloud Storage was chosen to organically fit into the infrastructure.
