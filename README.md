@@ -91,3 +91,14 @@ The chart below demonstrates the model's evaluation results (cumulative reward) 
 [![CoLab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YakivGalkin/cnn_decision_transformer/blob/main/DQN_generate_dataset.ipynb)  
 
 For offline dataset storage, I have chosen the HDF5 file format. One candidate was the Hugging Face Dataset with its Apache Arrow persistence layer, but it consumed more memory and worked more slowly. Since most of the work was done in Google Colab, Google Cloud Storage was chosen to organically fit into the infrastructure.
+
+## Making the Decision Transformer "Visual"
+The HuggingFace implementation of the Decision Transformer has hardcoded embedding layers for states and actions. My only option was to clone the sources and modify them. The changes were straightforward—utilize a CNN encoder for images. Additionally, when transitioning from a continuous to a discrete action space, it was necessary to change the loss function from MSE to cross-entropy.
+
+## Training the Visual Decision Transformer
+
+[![CoLab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YakivGalkin/cnn_decision_transformer/blob/main/VDT_train.ipynb)
+
+To expedite training, I decided to "borrow" weights from a pre-trained DQN and use them for the initialisation of the image encoder in the transformer. The chart below demonstrates the difference in the speed of learning between using random weights in the convolutional layers and using weights taken from the DQN.
+
+![Transformer Train](./media/decision_transformer_cnn.jpg)
